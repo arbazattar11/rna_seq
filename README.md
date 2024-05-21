@@ -25,6 +25,7 @@ This pipeline aims to simplify the RNA-seq analysis process by providing a modul
 
 - Java
 - R
+- Pandas
 - Fastqc
 - Fastp
 - Hisat2
@@ -116,7 +117,37 @@ stringtie [options] -G reference.gtf -o output.gtf input.bam
 ```
 -[options]: Additional options to customize the behavior of StringTie. In your command, -e enables the output of gene-level expression estimates, and -B outputs read coverages for each transcript.
 
+**Usage - For Expreesion Quantification Running the python script:**
+```bash
+import pandas as pd
 
+def quantify_expression(gtf_file):
+    # Load the GTF file into a DataFrame
+    columns = ['seqname', 'source', 'feature', 'start', 'end', 'score', 'strand', 'frame', 'attributes']
+    df = pd.read_csv(gtf_file, sep='\t', header=None, comment='#', names=columns)
+
+    # Filter rows to retain only transcripts (feature == 'transcript')
+    transcripts = df[df['feature'] == 'transcript']
+
+    # Extract gene_id and transcript_id from attributes column
+    transcripts['gene_id'] = transcripts['attributes'].str.extract(r'gene_id "(.*?)";')
+    transcripts['transcript_id'] = transcripts['attributes'].str.extract(r'transcript_id "(.*?)";')
+
+    # Group by gene_id and sum up the length of transcripts to get expression
+    expression = transcripts.groupby('gene_id')['end'].sum()
+
+    return expression
+
+if __name__ == "__main__":
+    # Path to the output GTF file from StringTie
+    gtf_file = 'path/to/your/output.gtf'
+
+    # Perform expression quantification
+    expression = quantify_expression(gtf_file)
+
+    # Print or save expression values
+    print(expression)
+```
 ## Contributing
 
 Contributions to this repository are welcome! If you have suggestions for improvements, bug fixes, or additional features, please open an issue or submit a pull request.
