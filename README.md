@@ -145,8 +145,8 @@ if __name__ == "__main__":
     # Perform expression quantification
     expression = quantify_expression(gtf_file)
 
-    # Print or save expression values
-    print(expression)
+    # Save expression values to a CSV file
+    expression.to_csv('expression.csv')
 ```
 ## Contributing
 
