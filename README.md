@@ -163,7 +163,7 @@ if __name__ == "__main__":
     expression.to_csv('expression.csv')
 ```
 ### Deseq2
-**Usage - Differential gene expression analysis using DESeq2 Using R:**
+**Usage - Differential gene expression analysis using DESeq2 in R:**
 ```bash
 # Load DESeq2 library
 library(DESeq2)
@@ -187,6 +187,49 @@ significant_results <- subset(results, padj < 0.05 & abs(log2FoldChange) > 1)
 top_genes <- head(significant_results[order(significant_results$padj),], n=10)
 print(top_genes)
 ```
+**Usage -explore and visualize gene expression patterns and differential expression between conditions.**
+- ggplot2
+```bash
+library(ggplot2)
+
+# Set up multiple plots in a grid
+par(mfrow=c(2,3))
+
+# List of genes to plot
+genes <- c("NM_024330_1", "NM_002508", "NM_007046", "NM_012249", "NM_014899", "NM_016495")
+
+# Loop through each gene and plot its counts
+for (gene in genes) {
+    plotCounts(DDS, gene=gene, intgroup="Condition")
+}
+```
+- PlotPCA
+```bash
+# Perform VST transformation
+pcaData <- vst(DDSeq, blind = FALSE)
+
+# Plot PCA
+plotPCA(pcaData, intgroup = "Condition")
+```
+- PlotMA
+```bash
+# Perform differential expression analysis
+Result <- nbinomTest(DDS, "primary", "metastatic")
+
+# Plot MA plot
+plotMA(Result)
+```
+### Further Analysis:
+- Identification of Differentially Expressed Genes (DEGs): Based on the plots and any additional statistical tests, identify genes that are significantly differentially expressed between conditions. DESeq2 typically provides statistical tests and adjusted p-values for this purpose.
+
+- Annotation and Functional Analysis: Once DEGs are identified, you might want to annotate them with biological information such as gene ontology (GO) terms, pathways, or functional annotations. Tools like clusterProfiler or enrichR in R can be used for functional enrichment analysis.
+
+- Validation: Validate the differential expression of selected genes using alternative methods such as qPCR or validation datasets if available.
+
+- Biological Interpretation: Interpret the results in the context of your biological question or hypothesis. Consider the biological relevance of identified DEGs and their potential roles in the studied biological process or disease.
+
+- Further Analysis: Depending on your research goals, you may proceed with downstream analyses such as network analysis, pathway analysis, or integration with other omics data.
+
 ## Contributing
 
 Contributions to this repository are welcome! If you have suggestions for improvements, bug fixes, or additional features, please open an issue or submit a pull request.
