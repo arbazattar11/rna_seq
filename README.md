@@ -33,6 +33,7 @@ This pipeline aims to simplify the RNA-seq analysis process by providing a modul
 'sudo apt update
 sudo apt install fastqc
 fastqc *.fastq.gz'
+`git clone https://github.com/username/repository.git`
 ## Contributing
 
 Contributions to this repository are welcome! If you have suggestions for improvements, bug fixes, or additional features, please open an issue or submit a pull request.
