@@ -11,9 +11,8 @@ This pipeline aims to simplify the RNA-seq analysis process by providing a modul
 ## Features
 
 - **Data Preprocessing**: Normalize and log-transform the expression data to prepare it for analysis.
-- **Principal Component Analysis (PCA)**: Reduce the dimensionality of the data and visualize sample relationships.
 - **Customizable**: Easily modify the script to incorporate additional analysis steps or adapt it to different experimental designs.
-- **Visualization**: Generate plots to visualize the results of PCA and explore the underlying structure of the data.
+- **Visualization**: Generate plots to visualize the results and explore the underlying structure of the data.
 
 ## Usage
 
