@@ -88,24 +88,34 @@ hisat2 -x index_prefix -1 read1.fastq.gz -2 read2.fastq.gz -S output.sam
 ```
 ### Samtools & Stringtie
 **Usage - Binary Alignment / Map format using Samtools & Stringtie:**
+- Convert sam file to bam format
 ```bash
 samtools view -Sb input.sam > output.bam
 ```
+- sorting
 ```bash
 samtools sort input.bam -o output.bam
 ```
+- indexing
 ```bash
 samtools index input.bam
-``````
+```
+- merged files
 ```bash
 stringtie --merge -G reference.gtf -o merged.gtf input_list.txt
 ```
+- creating gtf filename
 ```bash
 stringtie input.bam -G reference.gtf -o output.gtf
 ```
+- transcript assembly
+
 ```bash
-stringtie input.bam -G reference.gtf -o output.gtf
+stringtie [options] -G reference.gtf -o output.gtf input.bam
 ```
+-[options]: Additional options to customize the behavior of StringTie. In your command, -e enables the output of gene-level expression estimates, and -B outputs read coverages for each transcript.
+
+
 ## Contributing
 
 Contributions to this repository are welcome! If you have suggestions for improvements, bug fixes, or additional features, please open an issue or submit a pull request.
