@@ -28,7 +28,8 @@ This pipeline aims to simplify the RNA-seq analysis process by providing a modul
 - Fastqc
 - Fastp
 - Hisat2
-- samtools
+- Samtools
+- Stringtie
 - Deseq2
 
 ## Pipeline
@@ -92,23 +93,23 @@ hisat2 -x index_prefix -1 read1.fastq.gz -2 read2.fastq.gz -S output.sam
 ```bash
 samtools view -Sb input.sam > output.bam
 ```
-- sorting
+- Sorting
 ```bash
 samtools sort input.bam -o output.bam
 ```
-- indexing
+- Indexing
 ```bash
 samtools index input.bam
 ```
-- merged files
+- Merged files
 ```bash
 stringtie --merge -G reference.gtf -o merged.gtf input_list.txt
 ```
-- creating gtf filename
+- Creating gtf filename
 ```bash
 stringtie input.bam -G reference.gtf -o output.gtf
 ```
-- transcript assembly
+- Transcript assembly
 
 ```bash
 stringtie [options] -G reference.gtf -o output.gtf input.bam
