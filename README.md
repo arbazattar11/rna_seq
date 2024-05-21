@@ -36,7 +36,24 @@ This pipeline aims to simplify the RNA-seq analysis process by providing a modul
 `sudo apt install fastqc`
 `fastqc *.fastq.gz`/n
 **fastp**
+*single end*
 `fastp -i input.fastq.gz -o output.fastq.gz`
+*Paired end*
+`fastp -i input_R1.fastq.gz -I input_R2.fastq.gz -o output_R1.fastq.gz -O output_R2.fastq.gz --detect_adapter_for_pe`
+
+**some common options and parameters**
+
+-i: Input fastq file.
+-o: Output fastq file.
+--detect_adapter_for_pe: Automatically detect and remove adapter sequences for paired-end reads.
+--cut_front: Remove a specified number of bases from the 5' end of reads.
+--cut_tail: Remove a specified number of bases from the 3' end of reads.
+--cut_mean_quality: Trim low-quality bases from the ends of reads until the mean quality score meets a specified threshold.
+--length_required: Filter out reads shorter than a specified length.
+--qualified_quality_phred: Specify the minimum Phred quality score required to keep a base.
+--unqualified_percent_limit: Specify the maximum percentage of bases allowed with quality scores below the specified threshold.
+--thread: Specify the number of threads to use for processing (default is 1).
+
 
 ## Contributing
 
