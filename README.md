@@ -169,7 +169,7 @@ if __name__ == "__main__":
 library(DESeq2)
 
 # Load count data
-count_data <- read.table("count_matrix.txt", header=TRUE, row.names=1)
+count_data <- read.table("count_matrix.csv", header=TRUE, row.names=1)
 
 # Create DESeqDataSet object
 dds <- DESeqDataSetFromMatrix(countData=count_data, colData=col_data, design=~condition)
