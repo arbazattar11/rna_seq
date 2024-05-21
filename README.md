@@ -1,6 +1,6 @@
 # RNA-seq Analysis Pipeline
 
-Welcome to the RNA-seq Analysis Pipeline repository! This repository contains a linux script for performing RNA-seq data analysis. RNA sequencing (RNA-seq) is a powerful technique used to measure the expression of genes in a biological sample. This pipeline takes RNA-seq expression data as input, preprocesses it, performs principal component analysis (PCA), and visualizes the results.
+Welcome to the RNA-seq Analysis Pipeline repository! This repository contains a linux script for performing RNA-seq data analysis. RNA sequencing (RNA-seq) is a powerful technique used to measure the expression of genes in a biological sample. This pipeline takes RNA-seq expression data as input, preprocesses it and visualizes the results.
 
 ## Introduction
 
