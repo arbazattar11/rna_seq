@@ -30,16 +30,38 @@ This pipeline aims to simplify the RNA-seq analysis process by providing a modul
 - Hisat2
 - samtools
 - Deseq2
-## Pipline
-**Fastqc**
-`sudo apt update`
-`sudo apt install fastqc`
-`fastqc *.fastq.gz`/n
-**fastp**
-*single end*
-`fastp -i input.fastq.gz -o output.fastq.gz`
-*Paired end*
-`fastp -i input_R1.fastq.gz -I input_R2.fastq.gz -o output_R1.fastq.gz -O output_R2.fastq.gz --detect_adapter_for_pe`
+
+## Pipeline
+
+### FastQC
+
+**Installation:**
+```bash
+sudo apt update
+sudo apt install fastqc
+```
+
+**Usage:**
+```bash
+fastqc *.fastq.gz
+```
+
+### Fastp
+
+**Installation:**
+```bash
+# Fastp is not available via apt, you need to download and install it manually or via bioconda
+```
+
+**Usage - Single End:**
+```bash
+fastp -i input.fastq.gz -o output.fastq.gz
+```
+
+**Usage - Paired End:**
+```bash
+fastp -i input_R1.fastq.gz -I input_R2.fastq.gz -o output_R1.fastq.gz -O output_R2.fastq.gz --detect_adapter_for_pe
+```
 
 **some common options and parameters**
 
