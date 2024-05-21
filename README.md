@@ -75,6 +75,37 @@ fastp -i input_R1.fastq.gz -I input_R2.fastq.gz -o output_R1.fastq.gz -O output_
 - --qualified_quality_phred: Specify the minimum Phred quality score required to keep a base.
 - --unqualified_percent_limit: Specify the maximum percentage of bases allowed with quality scores below the specified threshold.
 - --thread: Specify the number of threads to use for processing (default is 1).
+
+### Hisat2 
+
+**Usage - build a HISAT2 index:**
+```bash
+hisat2-build genome.fa genome_index
+```
+**Usage - alignment and mapping using HISAT2:**
+```bash
+hisat2 -x index_prefix -1 read1.fastq.gz -2 read2.fastq.gz -S output.sam
+```
+### Samtools & Stringtie
+**Usage - Binary Alignment / Map format using Samtools & Stringtie:**
+```bash
+samtools view -Sb input.sam > output.bam
+```
+```bash
+samtools sort input.bam -o output.bam
+```
+```bash
+samtools index input.bam
+``````
+```bash
+stringtie --merge -G reference.gtf -o merged.gtf input_list.txt
+```
+```bash
+stringtie input.bam -G reference.gtf -o output.gtf
+```
+```bash
+stringtie input.bam -G reference.gtf -o output.gtf
+```
 ## Contributing
 
 Contributions to this repository are welcome! If you have suggestions for improvements, bug fixes, or additional features, please open an issue or submit a pull request.
