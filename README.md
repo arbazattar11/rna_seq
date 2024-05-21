@@ -16,9 +16,9 @@ This pipeline aims to simplify the RNA-seq analysis process by providing a modul
 
 ## Usage
 
-1. **Clone the Repository**: Clone this repository to your local machine using `git clone https://github.com/username/repository.git`.
+1. **Clone the Repository**: Clone this repository to your local machine using `git clone https://github.com/arbazattar11/rna_seq.git`.
 2. **Prepare Data**: Prepare your RNA-seq expression data in tabular format.
-3. **Run the Script**: Update the file path in the script to point to your data file and execute `python rna_seq_analysis.py`.
+3. **Run the Script**: Update the file path in the script to point to your data file and execute.
 4. **Explore Results**: Explore the generated plots to gain insights into the structure of your RNA-seq data.
 
 ## Dependencies
