@@ -52,7 +52,11 @@ fastqc *.fastq.gz
 
 **Installation:**
 ```bash
-# Fastp is not available via apt, you need to download and install it manually or via bioconda
+# Fastp is available via apt or you need to download and install it manually or via bioconda
+```
+**Installation:**
+```bash
+sudo apt install fastp
 ```
 
 **Usage - Single End:**
@@ -79,7 +83,10 @@ fastp -i input_R1.fastq.gz -I input_R2.fastq.gz -o output_R1.fastq.gz -O output_
 - --thread: Specify the number of threads to use for processing (default is 1).
 
 ### Hisat2 
-
+**Installation:**
+```bash
+sudo apt install Hisat2
+```
 **Usage - build a HISAT2 index:**
 ```bash
 hisat2-build genome.fa genome_index
@@ -89,6 +96,13 @@ hisat2-build genome.fa genome_index
 hisat2 -x index_prefix -1 read1.fastq.gz -2 read2.fastq.gz -S output.sam
 ```
 ### Samtools & Stringtie
+**Installation:**
+```bash
+sudo apt install Samtools
+```
+```bash
+sudo apt install Stringtie
+```
 **Usage - Binary Alignment / Map format using Samtools & Stringtie:**
 - Convert sam file to bam format
 ```bash
@@ -147,6 +161,31 @@ if __name__ == "__main__":
 
     # Save expression values to a CSV file
     expression.to_csv('expression.csv')
+```
+### Deseq2
+**Usage - Differential gene expression analysis using DESeq2 Using R:**
+```bash
+# Load DESeq2 library
+library(DESeq2)
+
+# Load count data
+count_data <- read.table("count_matrix.txt", header=TRUE, row.names=1)
+
+# Create DESeqDataSet object
+dds <- DESeqDataSetFromMatrix(countData=count_data, colData=col_data, design=~condition)
+
+# Perform normalization and differential expression analysis
+dds <- DESeq(dds)
+
+# Extract differential expression results
+results <- results(dds)
+
+# Filter results based on adjusted p-value and fold change
+significant_results <- subset(results, padj < 0.05 & abs(log2FoldChange) > 1)
+
+# View top differentially expressed genes
+top_genes <- head(significant_results[order(significant_results$padj),], n=10)
+print(top_genes)
 ```
 ## Contributing
 
