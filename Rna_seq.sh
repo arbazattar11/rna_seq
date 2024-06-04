@@ -12,6 +12,7 @@ sudo apt install Stringtie
 samtools view -Sb input.sam > output.bam
 samtools sort input.bam -o output.bam
 samtools index input.bam
+stringtie -G reference.gtf -o output.gtf input.bam
 stringtie --merge -G reference.gtf -o merged.gtf input_list.txt
 stringtie input.bam -G reference.gtf -o output.gtf
 stringtie [options] -G reference.gtf -o output.gtf input.bam
